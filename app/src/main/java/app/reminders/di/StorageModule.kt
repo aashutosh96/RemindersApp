@@ -24,7 +24,7 @@ val storageModule = module {
 }
 
 object PersistenceDataSourceProperties {
-    const val PREF_NAME = "Sweet.Apple.Acres.preference"
+    const val PREF_NAME = "Reminders.App.preference"
 }
 
 private fun String.provideSharedPreference(context: Context): SharedPreferences {

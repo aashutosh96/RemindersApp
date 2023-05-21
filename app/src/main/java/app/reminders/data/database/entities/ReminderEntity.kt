@@ -17,6 +17,7 @@ class ReminderEntity(
     val createdAt: String,
     @ColumnInfo(name = "updated_at")
     val updatedAt: String,
-    @ColumnInfo(name = "reminder_date")
-    val reminderDate: String
+    @ColumnInfo(name = "due_date")
+    val dueDate: String
 )
+

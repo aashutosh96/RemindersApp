@@ -4,6 +4,10 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.res.AssetManager
 import android.content.res.Resources
+import app.reminders.data.source.LocalDataSource
+import app.reminders.data.source.LocalDataSourceImpl
+import app.reminders.domain.repository.RemindersRepository
+import app.reminders.domain.repository.RemindersRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -18,13 +22,15 @@ val appModule = module {
 }
 
 val dataSourceModule = module {
-
+    single<LocalDataSource> { LocalDataSourceImpl(get()) }
 }
 
 val repositoryModule = module {
+    single<RemindersRepository> { RemindersRepositoryImpl(get()) }
 }
 
 val viewModelModule = module {
+
 }
 
 fun provideResources(context: Context): Resources = context.resources
