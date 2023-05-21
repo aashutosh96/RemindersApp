@@ -12,4 +12,5 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
 }

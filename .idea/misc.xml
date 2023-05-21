@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable-v24/ic_visibility_24.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.155" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2390625" />
+        <entry key="app/src/main/res/layout/fragment_create_todo.xml" value="0.2390625" />
         <entry key="app/src/main/res/layout/layout_progress_dialog.xml" value="0.2390625" />
       </map>
     </option>

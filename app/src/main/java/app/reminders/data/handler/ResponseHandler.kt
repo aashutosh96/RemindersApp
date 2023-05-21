@@ -10,7 +10,11 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import retrofit2.Response
 
-
+/**
+ * Response Generic Extension
+ * Response Status Code Handler
+ * Handle force logout in case of 401/403
+ */
 suspend fun <T> Response<T>.handleResponse(
     doActionOnSuccess: suspend (body: T) -> Unit = {},
     doActionOnFailure: suspend (body: String?) -> Unit = {}
@@ -24,7 +28,7 @@ suspend fun <T> Response<T>.handleResponse(
             Resource.Error(message())
         }
     } else if (code() in listOf(401, 403)) {
-        App.instance.forceLogout()
+//        App.instance.forceLogout()
         val errorBody = errorBody()?.string()
         val errorModel = Gson().fromJson(errorBody, BaseErrorEntity::class.java)
         doActionOnFailure.invoke(

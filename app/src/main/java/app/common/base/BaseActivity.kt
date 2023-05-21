@@ -20,9 +20,11 @@ import app.common.extension.hideKeyboard
 import app.common.extension.showProgress
 import app.common.utils.getBinding
 import app.reminders.App
+import app.reminders.AppContextWrapper
 import app.reminders.data.Prefs
 import com.aashutosh.reminders.R
 import org.koin.android.ext.android.inject
+import java.util.*
 
 
 abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
@@ -106,18 +108,15 @@ abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
         return super.dispatchTouchEvent(ev)
     }
 
-    /*  override fun attachBaseContext(newBase: Context?) {
-          var context: Context = AppContextWrapper.wrap(newBase, Locale("en"))
-          val lang = prefs.languageCode
-          if (lang == ENGLISH_EN) {
-              val locale = Locale("en")
-              context = AppContextWrapper.wrap(newBase, locale)
-          } else if (lang == SPANISH_ES) {
-              val locale = Locale("es")
-              context = AppContextWrapper.wrap(newBase, locale)
-          }
-          super.attachBaseContext(context)
-      }*/
+    override fun attachBaseContext(newBase: Context?) {
+        var context: Context = AppContextWrapper.wrap(newBase, Locale("en"))
+        val lang = prefs.languageCode
+        if (lang == "en") {
+            val locale = Locale("en")
+            context = AppContextWrapper.wrap(newBase, locale)
+        }
+        super.attachBaseContext(context)
+    }
 
     override fun applyOverrideConfiguration(overrideConfiguration: Configuration?) {
         if (overrideConfiguration != null) {
@@ -128,7 +127,7 @@ abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
         super.applyOverrideConfiguration(overrideConfiguration)
     }
 
-    fun reLoadActivity() {
+    fun reloadActivity() {
         val intent = intent
         finish()
         startActivity(intent)

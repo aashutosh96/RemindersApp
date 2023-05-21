@@ -14,6 +14,7 @@ class Prefs(private val sharedPreferences: SharedPreferences) {
         private const val LOGIN_RESPONSE = "LOGIN_RESPONSE"
         private const val KEY_IS_LOGGED_IN = "KEY_IS_LOGGED_IN"
         private const val KEY_IS_CONNECTED = "KEY_IS_CONNECTED"
+        private const val KEY_LANGUAGE_CODE = "KEY_LANGUAGE_CODE"
     }
 
     val gson = Gson()
@@ -28,6 +29,12 @@ class Prefs(private val sharedPreferences: SharedPreferences) {
         get() = sharedPreferences.getString(REFRESH_TOKEN, "") ?: "NoAuthentication"
         set(value) = sharedPreferences.edit {
             putString(REFRESH_TOKEN, value)
+        }
+
+    var languageCode: String
+        get() = sharedPreferences.getString(KEY_LANGUAGE_CODE, "en") ?: "en"
+        set(value) = sharedPreferences.edit {
+            putString(KEY_LANGUAGE_CODE, value)
         }
 
     var isLogin: Boolean

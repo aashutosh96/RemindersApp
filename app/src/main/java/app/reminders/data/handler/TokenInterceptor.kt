@@ -14,6 +14,11 @@ import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Token Interceptor to handle JWT
+ * In case of 401, hit Refresh Token Api to fetch new access Token
+ * Update the access token in cache
+ */
 class TokenInterceptor(private val prefs: Prefs, private val context: Context) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request: Request = chain.request()

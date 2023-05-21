@@ -19,7 +19,6 @@ open class BaseResponseEntity(
     var isHidden: Boolean = false,
     @SerializedName("Status")
     var status: Boolean = false,
-
 )
 
 open class BaseErrorEntity(
@@ -35,13 +34,6 @@ open class BaseErrorEntity(
     var status: Int,
     @SerializedName("data")
     var data: List<Any>? = null
-
-    /*,@SerializedName("email")
-    var email: List<String> = emptyList(),
-    @SerializedName("registration_id")
-    var registrationId: List<String> = emptyList(),
-    @SerializedName("code")
-    val code: String? = null*/
 )
 
 data class Errors(
