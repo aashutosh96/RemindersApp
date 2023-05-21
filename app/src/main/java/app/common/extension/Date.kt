@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-const val ESG_DATE_FORMAT = "MM/dd/yyyy"
+const val APP_DATE_TIME_FORMAT = "MM/dd/yyyy"
 
 fun getDateText(obtainedDate: String?): String? {
     val newDateFormat = SimpleDateFormat("yyyy-MM-dd")
@@ -196,7 +196,7 @@ private fun convertToCustomFormat(dateStr: String?, dateFormat: String): String 
 }
 
 fun currentDate(format: String = SERVER_TIME_DATE_FORMAT_WITH_TIME): String {
-    var c: Calendar = Calendar.getInstance()
+    val c: Calendar = Calendar.getInstance()
     var df: SimpleDateFormat? = null
     var formattedDate = ""
     df = SimpleDateFormat(format)

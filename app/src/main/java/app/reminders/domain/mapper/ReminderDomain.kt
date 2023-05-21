@@ -5,7 +5,8 @@ import app.reminders.data.database.entities.ReminderEntity
 class ReminderDomain(
     val id: String,
     val title: String,
-    val reminder: String
+    val reminder: String,
+    val isComplete: Boolean
 )
 
 fun mapEntityAsDomain(list: List<ReminderEntity>): List<ReminderDomain> {
@@ -13,7 +14,8 @@ fun mapEntityAsDomain(list: List<ReminderEntity>): List<ReminderDomain> {
         ReminderDomain(
             id = entity.id,
             title = entity.title,
-            reminder = entity.dueDate
+            reminder = entity.dueDate,
+            isComplete = entity.isComplete
         )
     }
 }
@@ -23,7 +25,8 @@ fun mapDomainAsEntity(
     title: String,
     reminder: String,
     createdDate: String,
-    updatedDate: String
+    updatedDate: String,
+    isComplete: Boolean,
 ): ReminderEntity {
     return ReminderEntity(
         id = id,
@@ -31,5 +34,6 @@ fun mapDomainAsEntity(
         createdAt = createdDate,
         updatedAt = updatedDate,
         dueDate = reminder,
+        isComplete = isComplete
     )
 }

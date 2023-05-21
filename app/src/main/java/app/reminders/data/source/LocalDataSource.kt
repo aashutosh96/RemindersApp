@@ -10,4 +10,5 @@ interface LocalDataSource {
     suspend fun addReminder(entity: ReminderEntity)
     suspend fun editReminder(id: String, title: String, dueDate: String)
     suspend fun deleteReminder(id: String)
+    suspend fun toggleReminderComplete(isComplete: Boolean, id: String)
 }
