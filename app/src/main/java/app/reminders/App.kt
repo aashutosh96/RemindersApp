@@ -32,7 +32,6 @@ class App : Application(), LifecycleObserver {
             koin.loadModules(
                 listOf(
                     appModule,
-                    netModule,
                     storageModule,
                     dataSourceModule,
                     repositoryModule,

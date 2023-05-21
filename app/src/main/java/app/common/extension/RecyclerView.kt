@@ -6,10 +6,6 @@ import android.graphics.drawable.Drawable
 import androidx.recyclerview.widget.*
 import app.common.utils.EqualSpacingItemDecoration
 
-/*fun RecyclerView.addLayoutAnimation(@AnimRes animRes: Int = R.anim.layout_animation_fall_down) {
-    layoutAnimation = AnimationUtils.loadLayoutAnimation(context, animRes)
-}*/
-
 fun RecyclerView.switchableLayoutManager(context: Context, spanCount: Int = 1) {
     layoutManager = if (spanCount > 1) {
         GridLayoutManager(context, spanCount)
@@ -49,10 +45,6 @@ interface OnStartDragListener {
     fun onStartDrag(viewHolder: RecyclerView.ViewHolder?)
 }
 
-
-/**
- * Created by Ayush Shrestha$ on 2022/5/11$.
- */
 
 class SimpleItemTouchHelperCallback(adapter: ItemTouchHelperAdapter) :
     ItemTouchHelper.Callback() {
