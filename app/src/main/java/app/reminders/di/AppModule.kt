@@ -8,9 +8,13 @@ import app.reminders.data.source.LocalDataSource
 import app.reminders.data.source.LocalDataSourceImpl
 import app.reminders.domain.repository.RemindersRepository
 import app.reminders.domain.repository.RemindersRepositoryImpl
+import app.reminders.presentation.features.create.CreateTodoViewModel
+import app.reminders.presentation.features.edit.EditTodoViewModel
+import app.reminders.presentation.features.todo.TodoListViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
@@ -30,7 +34,9 @@ val repositoryModule = module {
 }
 
 val viewModelModule = module {
-
+    viewModel { CreateTodoViewModel(get()) }
+    viewModel { EditTodoViewModel(get()) }
+    viewModel { TodoListViewModel(get()) }
 }
 
 fun provideResources(context: Context): Resources = context.resources
