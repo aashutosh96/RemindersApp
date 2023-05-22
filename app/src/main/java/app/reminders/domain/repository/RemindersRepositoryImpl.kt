@@ -1,12 +1,13 @@
 package app.reminders.domain.repository
 
-import app.common.extension.currentDate
 import app.common.extension.getCurrentDateTimeUTC
+import app.common.extension.logger
 import app.reminders.data.source.LocalDataSource
 import app.reminders.domain.mapper.ReminderDomain
 import app.reminders.domain.mapper.mapDomainAsEntity
 import app.reminders.domain.mapper.mapEntityAsDomain
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import java.util.*
 
@@ -23,7 +24,7 @@ class RemindersRepositoryImpl(private val localDataSource: LocalDataSource) : Re
             mapDomainAsEntity(
                 id = reminder.id,
                 title = reminder.title,
-                reminder = reminder.reminder,
+                reminder = reminder.dueDate,
                 createdDate = getCurrentDateTimeUTC(date),
                 updatedDate = getCurrentDateTimeUTC(date),
                 isComplete = false,

@@ -1,5 +1,6 @@
 package app.reminders.data.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -14,7 +15,7 @@ interface AppDao {
     fun getAllReminders(): Flow<List<ReminderEntity>>
 
     @Query("SELECT * FROM reminder_table WHERE title = :query")
-    suspend fun getReminder(query: String): ReminderEntity
+    fun getReminder(query: String): Flow<ReminderEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addReminder(entity: ReminderEntity)

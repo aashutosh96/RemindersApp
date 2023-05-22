@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Reminders"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="app.reminders.presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove" />
     </application>
 
 </manifest>

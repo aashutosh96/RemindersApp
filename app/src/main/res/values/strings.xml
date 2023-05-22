@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Reminders</string>
+    <string name="create">Create</string>
+    <string name="enter_title">Enter title</string>
+    <string name="todo_title">Todo title</string>
+    <string name="pick_date">Pick Date</string>
+    <string name="due_date">Due Date</string>
+    <string name="edit">Edit</string>
+    <string name="no_new_reminders">No new Reminders</string>
+    <string name="title_home">Home</string>
 </resources>

@@ -11,7 +11,9 @@
     <color name="colorPrimary">#6E9836</color>
     <color name="colorPrimaryDark">#407056</color>
     <color name="colorPrimaryLight">#407014</color>
+    <color name="border_color">#DFDFDF</color>
     <color name="text_color">#959595</color>
+    <color name="text_color_dark">#7E7E7E</color>
     <color name="color_transparent">#00000000</color>
 
 </resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/todoListFragment">
+
+    <fragment
+        android:id="@+id/createTodoFragment"
+        android:name="app.reminders.presentation.features.create.CreateTodoFragment"
+        android:label="Create New Reminder"
+        tools:layout="@layout/fragment_create_todo" />
+    <fragment
+        android:id="@+id/todoListFragment"
+        android:name="app.reminders.presentation.features.todo.TodoListFragment"
+        android:label="All Reminders"
+        tools:layout="@layout/fragment_todo_list" />
+    <fragment
+        android:id="@+id/editTodoFragment"
+        android:name="app.reminders.presentation.features.edit.EditTodoFragment"
+        android:label="Edit Reminder"
+        tools:layout="@layout/fragment_edit_todo" />
+    <fragment
+        android:id="@+id/preferencesFragment"
+        android:name="app.reminders.presentation.features.preferences.PreferencesFragment"
+        android:label="Preferences"
+        tools:layout="@layout/fragment_preferences" />
+</navigation>

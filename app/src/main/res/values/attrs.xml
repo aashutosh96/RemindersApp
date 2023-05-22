@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleAnswer">
+        <attr name="tav_title" format="string" />
+        <attr name="tav_answer" format="string" />
+        <attr name="tav_has_border" format="boolean" />
+        <attr name="tav_rich_text" format="boolean" />
+        <attr name="tav_is_editable" format="boolean" />
+        <attr name="tav_is_ime_done" format="boolean" />
+        <attr name="tav_height" format="integer" />
+        <attr name="tav_input_type" format="integer" />
+        <attr name="tav_single_line_title" format="boolean" />
+    </declare-styleable>
+</resources>

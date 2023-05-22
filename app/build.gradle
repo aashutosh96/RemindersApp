@@ -7,12 +7,13 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    namespace 'com.aashutosh.reminders'
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.aashutosh.reminders"
         minSdk 23
-        targetSdk 33
+        targetSdk 32
         versionCode 1
         versionName "1.0"
 
@@ -22,37 +23,36 @@ android {
         viewBinding = true
         dataBinding = true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    packagingOptions {
+
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
-    }
     flavorDimensions "environment"
     productFlavors {
         stage {
             dimension "environment"
-            applicationId "com.outcode.sweetappleacres_stage"
+            applicationId "com.aashutosh.reminders_stage"
             versionCode 1
             versionName "0.0.1"
-            buildConfigField "String", "BASE_URL", "\"https://sweet-apple-acres.netlify.app/\""
             buildConfigField "Boolean", "developerTest", "true"
         }
         production {
             dimension "environment"
-            applicationId "com.outcode.sweetappleacres"
+            applicationId "com.aashutosh.reminders"
             versionCode 1
             versionName "0.0.1"
-            buildConfigField "String", "BASE_URL", "\"https://sweet-apple-acres.netlify.app/\""
         }
     }
     lint {
@@ -65,9 +65,11 @@ dependencies {
 
     implementation project(':dialogbox')
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

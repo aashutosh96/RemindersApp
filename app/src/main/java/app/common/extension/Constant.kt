@@ -20,7 +20,8 @@ const val PAGE: Int = 20
 const val JSA_STEP_COUNT: Int = 6
 
 const val dateFormatWithOutTime = "yyyy-MM-dd"
-const val SERVER_TIME_DATE_FORMAT_WITH_TIME = "MMM dd,yyyy @ hh:mm aa"
+const val SERVER_TIME_DATE_FORMAT_WITH_TIME = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+const val CUSTOM_DATE_TIME_FORMAT = "MMM dd,yyyy hh:mm aa"
 
 
 const val BACK_STACK = "BACK_STACK"
@@ -66,9 +67,6 @@ const val KELVIN = 273.15
 const val CELSIUS = 100
 
 const val REQUEST_CHECK_SETTINGS = 484
-
-val SOCKET_URL = BuildConfig.BASE_URL
-
 
 var IS_FIRST = true
 var IS_DIALOG_SHOWING = false

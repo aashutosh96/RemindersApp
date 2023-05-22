@@ -12,6 +12,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.viewbinding.ViewBinding
 import app.common.extension.ProgressDialogHelper
@@ -40,6 +41,7 @@ abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
         progressDialog = ProgressDialogHelper.getProgressDialog(this)
         hideKeyboard()
         App.instance.setUpActivityContext(this)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 
     open fun resumeInternet() {}

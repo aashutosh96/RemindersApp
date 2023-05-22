@@ -26,7 +26,7 @@ val appModule = module {
 }
 
 val dataSourceModule = module {
-    single<LocalDataSource> { LocalDataSourceImpl(get()) }
+    single<LocalDataSource> { LocalDataSourceImpl(get(), get()) }
 }
 
 val repositoryModule = module {
