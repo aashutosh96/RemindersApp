@@ -77,7 +77,9 @@ class CreateTodoFragment : BaseFragment<FragmentCreateTodoBinding>(), View.OnCli
                             cal.get(Calendar.YEAR),
                             cal.get(Calendar.MONTH),
                             cal.get(Calendar.DAY_OF_MONTH)
-                        ).show()
+                        ).apply {
+                            this.datePicker.minDate = System.currentTimeMillis()
+                        }.show()
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }

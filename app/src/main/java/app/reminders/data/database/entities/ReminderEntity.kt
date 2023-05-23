@@ -14,11 +14,11 @@ class ReminderEntity(
     @ColumnInfo(name = "title")
     val title: String,
     @ColumnInfo(name = "created_at")
-    val createdAt: String,
+    val createdAt: Long,
     @ColumnInfo(name = "updated_at")
-    val updatedAt: String,
+    val updatedAt: Long,
     @ColumnInfo(name = "due_date")
-    val dueDate: String,
+    val dueDate: Long,
     @ColumnInfo(name = "is_complete")
     val isComplete: Boolean
 )

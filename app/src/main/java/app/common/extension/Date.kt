@@ -7,7 +7,6 @@ package app.common.extension
 
 import android.annotation.SuppressLint
 import androidx.core.util.Preconditions
-import com.google.android.material.timepicker.TimeFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -258,7 +257,7 @@ fun getCurrentDateTime(date: Date): String {
 
 fun getCurrentDateTimeUTC(date: Date): String {
     val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.ENGLISH)
-    sdf.timeZone = TimeZone.getTimeZone("UTC")
+//    sdf.timeZone = TimeZone.getTimeZone("UTC")
     return sdf.format(date)
 }
 
@@ -266,7 +265,7 @@ fun getCurrentDateTimeUTC(date: Date): String {
 fun parseServerDate(date: String): String {
     return try {
         val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.ENGLISH)
-        sdf.timeZone = TimeZone.getTimeZone("UTC")
+//        sdf.timeZone = TimeZone.getTimeZone("UTC")
         val parsedDate = sdf.parse(date)
         getDateTime(parsedDate)
     } catch (e: Exception) {
@@ -346,10 +345,21 @@ fun getFormattedCurrentTime(date: Date) : String {
     return sdf.format(date)
 }
 
+fun getDateInMillis(date: Date): Long {
+    return date.time;
+}
+
 fun getMilliSecondsFromDateTime(date: String): Long {
-    val sdf = SimpleDateFormat("HH:mm:ss", Locale.ENGLISH)
-    sdf.timeZone = TimeZone.getTimeZone("UTC")
+    val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.ENGLISH)
+//    sdf.timeZone = TimeZone.getTimeZone("UTC")
     val parsedTime = sdf.parse(date)
     return parsedTime.time
+}
+
+fun getDateFromMillis(milliSeconds: Long): String {
+    val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.ENGLISH)
+    val calendar = Calendar.getInstance()
+    calendar.timeInMillis = milliSeconds
+    return formatter.format(calendar.time)
 }
 

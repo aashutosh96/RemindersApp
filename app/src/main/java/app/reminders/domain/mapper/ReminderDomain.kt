@@ -1,5 +1,6 @@
 package app.reminders.domain.mapper
 
+import app.common.extension.getDateFromMillis
 import app.reminders.data.database.entities.ReminderEntity
 
 class ReminderDomain(
@@ -14,7 +15,7 @@ fun mapEntityAsDomain(list: List<ReminderEntity>): List<ReminderDomain> {
         ReminderDomain(
             id = entity.id,
             title = entity.title,
-            dueDate = entity.dueDate,
+            dueDate = getDateFromMillis(entity.dueDate),
             isComplete = entity.isComplete
         )
     }
@@ -23,9 +24,9 @@ fun mapEntityAsDomain(list: List<ReminderEntity>): List<ReminderDomain> {
 fun mapDomainAsEntity(
     id: String,
     title: String,
-    reminder: String,
-    createdDate: String,
-    updatedDate: String,
+    reminder: Long,
+    createdDate: Long,
+    updatedDate: Long,
     isComplete: Boolean,
 ): ReminderEntity {
     return ReminderEntity(

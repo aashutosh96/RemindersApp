@@ -11,8 +11,17 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface AppDao {
 
-    @Query("SELECT * FROM reminder_table")
+    @Query("SELECT * FROM reminder_table ORDER BY due_date ASC")
     fun getAllReminders(): Flow<List<ReminderEntity>>
+
+    @Query("SELECT * FROM reminder_table ORDER BY due_date DESC")
+    fun getAllRemindersDesc(): Flow<List<ReminderEntity>>
+
+    @Query("SELECT * FROM reminder_table WHERE is_complete = :isCompleteFlag ORDER BY due_date ASC")
+    fun filterRemindersASC(isCompleteFlag: Boolean): Flow<List<ReminderEntity>>
+
+    @Query("SELECT * FROM reminder_table WHERE is_complete = :isCompleteFlag ORDER BY due_date DESC")
+    fun filterRemindersDESC(isCompleteFlag: Boolean): Flow<List<ReminderEntity>>
 
     @Query("SELECT * FROM reminder_table WHERE title = :query")
     fun getReminder(query: String): Flow<ReminderEntity>
@@ -21,10 +30,10 @@ interface AppDao {
     suspend fun addReminder(entity: ReminderEntity)
 
     @Query("UPDATE reminder_table SET title = :queryTitle, due_date = :queryDueDate WHERE id = :queryId")
-    suspend fun updateReminder(queryTitle: String, queryDueDate: String, queryId: String)
+    suspend fun updateReminder(queryTitle: String, queryDueDate: Long, queryId: String)
 
     @Query("UPDATE reminder_table SET is_complete = :queryIsComplete, updated_at = :queryDate WHERE id = :queryId")
-    suspend fun setComplete(queryIsComplete: Boolean, queryDate: String, queryId: String)
+    suspend fun setComplete(queryIsComplete: Boolean, queryDate: Long, queryId: String)
 
     @Query("DELETE FROM reminder_table WHERE id = :queryId")
     suspend fun deleteReminder(queryId: String)
