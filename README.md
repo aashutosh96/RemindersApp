@@ -15,6 +15,7 @@ Reminder App to track your todos. Build with MVVM in Clean Architecture. All tod
 - Clean Architecture with separation of data, domain and presentation
 - MVVM architecture with Repository Pattern
 - Encapsulate Db Operations in a data source.
+- Usage of Koin for Dependency Injection
 
 ### Work under Progress
 - Add WorkManager to pop reminder notification
