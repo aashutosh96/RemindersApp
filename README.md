@@ -21,6 +21,9 @@ Reminder App to track your todos. Build with MVVM in Clean Architecture. All tod
 - Add WorkManager to pop reminder notification
 - Delete Completed Reminders automatically after 24 hours
 
+### Download link
+https://drive.google.com/file/d/1YGrYD9dCgyh1PjvopDOad3V0Ml-Gzk0f/view?usp=sharing
+
 ### Screenshots
 
 ![](https://github.com/aashutosh96/RemindersApp/blob/main/screenshots/Screenshot_1684839987.png)
