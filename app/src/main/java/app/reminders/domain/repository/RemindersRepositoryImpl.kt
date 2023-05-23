@@ -11,12 +11,6 @@ import kotlinx.coroutines.flow.map
 import java.util.*
 
 class RemindersRepositoryImpl(private val localDataSource: LocalDataSource) : RemindersRepository {
-    override suspend fun getAllReminders(isAscending: Boolean): Flow<List<ReminderDomain>> {
-        return localDataSource.getAllReminders(isAscending).map {
-            mapEntityAsDomain(it)
-        }
-    }
-
     override suspend fun filterReminders(
         isAscending: Boolean,
         isComplete: Boolean
@@ -26,7 +20,7 @@ class RemindersRepositoryImpl(private val localDataSource: LocalDataSource) : Re
         }
     }
 
-    override suspend fun addReminder(reminder: ReminderDomain) {
+    override suspend fun addReminder(reminder: ReminderDomain): Flow<Unit> {
         val date = getCurrentDateTimeUTC(Date())
         return localDataSource.addReminder(
             mapDomainAsEntity(
@@ -40,15 +34,15 @@ class RemindersRepositoryImpl(private val localDataSource: LocalDataSource) : Re
         )
     }
 
-    override suspend fun editReminder(id: String, title: String, dueDate: String) {
+    override suspend fun editReminder(id: String, title: String, dueDate: String): Flow<Unit> {
         return localDataSource.editReminder(id, title, getMilliSecondsFromDateTime(dueDate))
     }
 
-    override suspend fun deleteReminder(id: String) {
+    override suspend fun deleteReminder(id: String): Flow<Unit> {
         return localDataSource.deleteReminder(id)
     }
 
-    override suspend fun toggleReminderComplete(isComplete: Boolean, id: String) {
+    override suspend fun toggleReminderComplete(isComplete: Boolean, id: String): Flow<Unit> {
         return localDataSource.toggleReminderComplete(isComplete, id)
     }
 

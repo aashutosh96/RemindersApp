@@ -1,14 +1,17 @@
 package app.reminders.domain.mapper
 
+import android.os.Parcelable
 import app.common.extension.getDateFromMillis
 import app.reminders.data.database.entities.ReminderEntity
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 class ReminderDomain(
     val id: String,
     val title: String,
     val dueDate: String,
     val isComplete: Boolean
-)
+): Parcelable
 
 fun mapEntityAsDomain(list: List<ReminderEntity>): List<ReminderDomain> {
     return list.map { entity ->

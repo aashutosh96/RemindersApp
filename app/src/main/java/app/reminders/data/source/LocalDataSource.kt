@@ -6,11 +6,9 @@ import app.reminders.domain.mapper.ReminderDomain
 import kotlinx.coroutines.flow.Flow
 
 interface LocalDataSource {
-    suspend fun getAllReminders(isAscending: Boolean): Flow<List<ReminderEntity>>
     suspend fun filterReminders(isAscending: Boolean, isComplete: Boolean): Flow<List<ReminderEntity>>
-    suspend fun getReminderById(id: String): Flow<ReminderEntity>
-    suspend fun addReminder(entity: ReminderEntity)
-    suspend fun editReminder(id: String, title: String, dueDate: Long)
-    suspend fun deleteReminder(id: String)
-    suspend fun toggleReminderComplete(isComplete: Boolean, id: String)
+    suspend fun addReminder(entity: ReminderEntity): Flow<Unit>
+    suspend fun editReminder(id: String, title: String, dueDate: Long): Flow<Unit>
+    suspend fun deleteReminder(id: String): Flow<Unit>
+    suspend fun toggleReminderComplete(isComplete: Boolean, id: String): Flow<Unit>
 }

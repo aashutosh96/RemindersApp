@@ -4,6 +4,8 @@ import androidx.lifecycle.*
 import app.common.extension.FIRST_NAME_REGEX
 import app.reminders.domain.mapper.ReminderDomain
 import app.reminders.domain.repository.RemindersRepository
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 const val TITLE = "Title"
@@ -28,9 +30,12 @@ class CreateTodoViewModel(private val remindersRepository: RemindersRepository) 
 
     fun createReminder(reminderDomain: ReminderDomain) {
         viewModelScope.launch {
-            _viewState.postValue(CreateTodoViewState.Loading)
             remindersRepository.addReminder(reminderDomain)
-            _viewState.postValue(CreateTodoViewState.Complete)
+                .onStart { _viewState.postValue(CreateTodoViewState.Loading) }.catch { e ->
+                _viewState.postValue(CreateTodoViewState.Error(e.localizedMessage))
+            }.collect {
+                _viewState.postValue(CreateTodoViewState.Complete)
+            }
         }
     }
 }

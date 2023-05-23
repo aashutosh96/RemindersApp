@@ -5,10 +5,7 @@ import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.View
 import app.common.base.BaseFragment
-import app.common.extension.CUSTOM_DATE_TIME_FORMAT
-import app.common.extension.SERVER_TIME_DATE_FORMAT_WITH_TIME
-import app.common.extension.setOnSingleClickListener
-import app.common.extension.snack
+import app.common.extension.*
 import app.common.utils.randomUUID
 import app.reminders.domain.mapper.ReminderDomain
 import com.aashutosh.reminders.databinding.FragmentCreateTodoBinding
@@ -20,7 +17,6 @@ import java.util.*
 class CreateTodoFragment : BaseFragment<FragmentCreateTodoBinding>(), View.OnClickListener {
     private val viewModel: CreateTodoViewModel by viewModel()
     private var selectedDate = ""
-    private var selectedTime = ""
 
     companion object {
         fun newInstance() = CreateTodoFragment()
@@ -40,8 +36,21 @@ class CreateTodoFragment : BaseFragment<FragmentCreateTodoBinding>(), View.OnCli
                 }
                 is CreateTodoViewState.Complete -> {
                     hideProgress()
+                    clearTextFields()
+                }
+                is CreateTodoViewState.Error -> {
+                    hideProgress()
+                    snack(it.error.orUnknownError())
                 }
             }
+        }
+    }
+
+    private fun clearTextFields() {
+        with(binding) {
+            reminderForm.etTitle.value = ""
+            reminderForm.etDueDate.value = ""
+            selectedDate = ""
         }
     }
 
@@ -63,10 +72,10 @@ class CreateTodoFragment : BaseFragment<FragmentCreateTodoBinding>(), View.OnCli
                                         cal.set(Calendar.HOUR_OF_DAY, hourOfDay)
                                         cal.set(Calendar.MINUTE, minute)
                                         selectedDate = SimpleDateFormat(
-                                            SERVER_TIME_DATE_FORMAT_WITH_TIME
+                                            SERVER_TIME_DATE_FORMAT_WITH_TIME, Locale.ENGLISH
                                         ).format(cal.time).orEmpty()
                                         reminderForm.etDueDate.value = SimpleDateFormat(
-                                            CUSTOM_DATE_TIME_FORMAT
+                                            CUSTOM_DATE_TIME_FORMAT, Locale.ENGLISH
                                         ).format(cal.time).orEmpty()
                                     },
                                     cal.get(Calendar.HOUR_OF_DAY),

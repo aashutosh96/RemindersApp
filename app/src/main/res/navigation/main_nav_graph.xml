@@ -14,12 +14,20 @@
         android:id="@+id/todoListFragment"
         android:name="app.reminders.presentation.features.todo.TodoListFragment"
         android:label="All Reminders"
-        tools:layout="@layout/fragment_todo_list" />
+        tools:layout="@layout/fragment_todo_list" >
+        <action
+            android:id="@+id/action_todoListFragment_to_editTodoFragment"
+            app:destination="@id/editTodoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editTodoFragment"
         android:name="app.reminders.presentation.features.edit.EditTodoFragment"
         android:label="Edit Reminder"
-        tools:layout="@layout/fragment_edit_todo" />
+        tools:layout="@layout/fragment_edit_todo" >
+        <argument
+            android:name="reminder_item"
+            app:argType="app.reminders.domain.mapper.ReminderDomain" />
+    </fragment>
     <fragment
         android:id="@+id/preferencesFragment"
         android:name="app.reminders.presentation.features.preferences.PreferencesFragment"

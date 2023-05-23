@@ -245,7 +245,7 @@ fun getDateTime(date: Date): String {
 
 fun getDateTimeInFormat(date: Date, format: String): String {
     val sdf = SimpleDateFormat(format, Locale.ENGLISH)
-    sdf.timeZone = TimeZone.getDefault()
+//    sdf.timeZone = TimeZone.getDefault()
     return sdf.format(date)
 }
 
@@ -276,8 +276,8 @@ fun parseServerDate(date: String): String {
 
 fun parseDateToFormat(date: String, format: String): String {
     return try {
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
-        sdf.timeZone = TimeZone.getTimeZone("UTC")
+        val sdf = SimpleDateFormat(CUSTOM_DATE_TIME_FORMAT, Locale.ENGLISH)
+//        sdf.timeZone = TimeZone.getTimeZone("UTC")
         val parsedDate = sdf.parse(date)
         getDateTimeInFormat(parsedDate, format)
     } catch (e: Exception) {
